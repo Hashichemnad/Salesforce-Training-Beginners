@@ -1,6 +1,6 @@
 # Salesforce-Rest-Api Apex Classes
 
-sample.cls - Apex class for Post request and simple validations. /n
+sample.cls - Apex class for Post request and simple validations. <br>
 wrapperReq.cls - Wrapper class for request json object.
 wrapperRes.cls - Wrapper class for response json object
 
