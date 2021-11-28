@@ -1,0 +1,31 @@
+global without sharing class FormController{
+    
+ 
+     @remoteAction
+     global static string saveSurvey(String name, String email, String contact) {
+        try{
+
+            string jsonStr = '{\"name\":\"'+name+'\", \"email\":\"'+email+'\", \"contact\":\"'+contact+'\"}';
+            RestRequest req1 = new RestRequest(); 
+            req1.httpMethod = 'POST';
+            req1.requestBody = Blob.valueof(jsonStr);
+            RestContext.request = req1;  
+    
+           	RestResponse res = new RestResponse();
+        	RestContext.response = res;
+        	sample.execute();
+            wrapperRes wrpres=(wrapperRes)System.JSON.deserialize(RestContext.response.responseBody.tostring(), wrapperRes.class);
+            
+           return wrpres.status;
+    
+        }catch(Exception e) {
+    
+                
+                System.debug('Exception: '+e.getMessage());
+    
+                return e.getMessage();
+    
+        }
+     }
+     
+ }
